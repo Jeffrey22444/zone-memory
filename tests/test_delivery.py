@@ -16,6 +16,7 @@ class DeliveryTest(unittest.TestCase):
             ROOT / "build_release.py",
             ROOT / "skills/zone-memory/SKILL.md",
             ROOT / "skills/zone-memory/REFERENCE.md",
+            ROOT / "skills/zone-memory/examples/bootstrap_flow.md",
             ROOT / "skills/zone-memory/references/agents_section.md",
             ROOT / "skills/zone-memory/references/opening_prompts.md",
         ]

@@ -15,7 +15,9 @@ REQUIRED_SKILL_FILES = (
     Path("SKILL.md"),
     Path("REFERENCE.md"),
     Path("references/agents_section.md"),
+    Path("references/opening_prompts.md"),
     Path("references/zone_operating_model_template.md"),
+    Path("examples/bootstrap_flow.md"),
 )
 
 

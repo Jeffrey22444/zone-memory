@@ -1,20 +1,45 @@
 # Architecture
 
-## Purpose
+## Goal
 
-What this system does and what this document covers.
+- What this architecture is trying to preserve
 
-## Main Modules
+## Required Module Boundaries
 
-- Module:
-- Responsibility:
-- Depends on:
+### 1. Core logic
 
-## Boundaries
+Inputs:
 
-- What must stay separated
-- What should not depend on what
+- input 1
+- input 2
 
-## Data Flow
+Outputs:
 
-Describe the main request or event flow in a few steps.
+- output 1
+
+Must not depend on:
+
+- forbidden dependency 1
+
+### 2. External data
+
+- responsibility
+
+### 3. Execution or application layer
+
+- responsibility
+
+## Dependency Direction
+
+```text
+layer 1 -> layer 2 -> layer 3
+```
+
+Forbidden shortcuts:
+
+- shortcut 1
+- shortcut 2
+
+## Architecture Stop Rule
+
+- When execution must stop and route back to planning

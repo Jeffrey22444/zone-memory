@@ -6,6 +6,8 @@
 - Do not repeat stable project rules in every prompt; reference `AGENTS.md`, this file, product consensus docs, architecture docs, and the implementation plan.
 - Start with 3-5 files to read, then expand only when needed.
 - Prefer short task cards over full handoffs for small and medium work.
+- Do not split work so finely that `执行区` loses momentum; prefer medium-sized coherent slices with clear gates.
+- Use `/private/tmp` handoffs only for complex, risky, ambiguous, multi-stage, or failed-acceptance work.
 - Every execution task gets a short Acceptance Contract.
 - A separate Acceptance pass is required only for risky, user-critical, or explicitly requested work.
 
@@ -16,11 +18,22 @@ Responsibilities:
 - clarify goals, constraints, risks, assumptions, and acceptance criteria
 - discuss options and recommendations before handing work to execution
 - create short task cards for small and medium work
+- lock down which decisions remain with Planning and must not be silently made by `执行区`
+- make execution tasks specific enough that `执行区` does not need to invent unconfirmed strategy or product decisions
 
 Boundaries:
 
 - do not edit production code unless explicitly asked
 - do not silently decide unclear product behavior
+
+Preferred output:
+
+- short discussion and recommendation first
+- then either a short task card or a full handoff when complexity warrants it
+- for simple, small work, give `执行区` a short task card directly and do not default to a separate `验收区` task
+- when routing complex work with a handoff doc, end with a copy-ready block for `执行区`: absolute path plus a short prompt
+- when a handoff doc is used for complex work, default to including a second copy-ready block for `验收区`
+- when pairing execution and acceptance, avoid duplicate reading and duplicate test instructions unless risk warrants it
 
 ## Execution
 
@@ -28,13 +41,22 @@ Responsibilities:
 
 - read the relevant docs, task card, and memory files
 - implement the smallest working change
+- reuse existing patterns
 - run focused verification
 - report evidence
+- stop when the task depends on an undecided planning item
 
 Boundaries:
 
 - do not redesign scope
-- do not silently decide unresolved product or architecture questions
+- do not change product behavior beyond the task
+- stop if the task conflicts with safety rules, consensus docs, or code reality
+- do not silently decide unresolved product, architecture, or phase-gate questions
+
+Preferred output:
+
+- short implementation summary
+- required evidence report using the fixed template below
 
 ## Acceptance
 
@@ -43,23 +65,39 @@ Responsibilities:
 - inspect the diff, tests, and behavior against the task
 - verify acceptance criteria, safety boundaries, and regression risk
 - decide pass or fail
+- use the Acceptance Contract plus execution evidence plus current diff as the default input set
 
 Boundaries:
 
 - do not modify code
 - do not redesign the solution
+- do not repeat the full execution task unless the handoff explicitly requires it
+
+Preferred output:
+
+- pass/fail first
+- findings by severity with file and line references
+- a minimal return task only when needed
 
 ## Maintenance
 
 Responsibilities:
 
-- inspect Git status, environment, dependencies, and runtime-state problems
+- inspect Git status, branches, diffs, remotes, and untracked files
+- inspect environment, dependency, and runtime-state problems
 - route product-code changes back to execution
 
 Boundaries:
 
 - do not design product behavior
 - do not modify code or config unless explicitly asked
+- do not merge, rebase, reset, push, or delete branches without explicit approval
+
+Preferred output:
+
+- current state summary
+- key evidence
+- safe next step
 
 ## Standard Cards
 
@@ -74,6 +112,12 @@ Edit targets:
 Execution self-check:
 Stop if:
 ```
+
+Task-card rule:
+
+- A Planning-generated execution task must be specific enough that `执行区`
+  does not have to invent strategy, product behavior, runtime, storage, or
+  other unresolved user decisions.
 
 Acceptance Contract:
 
@@ -97,4 +141,25 @@ Results:
 Manual checks:
 Scope skipped:
 Blocked / needs planning:
+```
+
+Acceptance review task:
+
+```text
+Goal:
+Read first:
+Review input:
+Focus checks:
+Do not repeat:
+Output:
+```
+
+Maintenance handoff:
+
+```text
+Status:
+Evidence:
+Risk:
+Route to:
+Three-line handoff:
 ```

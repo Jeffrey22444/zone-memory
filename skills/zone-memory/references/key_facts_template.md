@@ -13,8 +13,10 @@ Check this file before assuming commands, paths, ports, URLs, tooling, or local 
 
 ## Stable Commands
 
-- Build:
-- Verify:
+- Build: `make build`
+- Verify: `make verify`
+
+Replace or remove these examples to match the real project.
 
 ## Stable Facts
 
@@ -27,3 +29,26 @@ Check this file before assuming commands, paths, ports, URLs, tooling, or local 
 ## Last Verified Environment
 
 - YYYY-MM-DD: short, drift-prone environment fact
+
+Keep this section short. If a fact will age quickly, keep it here instead of mixing it into stable facts.
+
+## Security
+
+Never store:
+
+- passwords
+- API keys
+- auth tokens
+- private keys
+- credential JSON contents
+- credential values
+
+Safe to store:
+
+- public URLs
+- local ports
+- project IDs
+- non-secret environment variable names
+- file paths
+- tooling conventions
+- common commands

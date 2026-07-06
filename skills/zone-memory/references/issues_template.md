@@ -24,3 +24,7 @@ Agents should scan this block first, then read only the relevant latest entry be
 - **Scope Skipped**: Intentional non-goals.
 - **Planning Decisions**: Locked decisions or unresolved items, if relevant.
 - **Notes**: Important context.
+
+## Security
+
+Do not store secrets, tokens, passwords, private keys, credential JSON, or credential values here.
