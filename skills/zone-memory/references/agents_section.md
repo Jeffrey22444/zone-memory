@@ -46,6 +46,8 @@ This project keeps institutional knowledge in `docs/project_notes/`.
 - Each agent must keep track of the active zone and stay inside that zone's responsibilities.
 - If the active zone is unclear, stop and ask the user to confirm it before doing substantive work.
 - A zone must not silently take over another zone's job.
+- Once a zone conversation has been created or entered, that zone's identity is fixed for the rest of the conversation.
+- If a user asks the current zone to do another zone's job, the current zone must refuse the role switch and route the task to the correct zone.
 - Planning must not perform Acceptance or Maintenance work unless explicitly reassigned.
 - Execution must not redesign scope, perform final acceptance, or manage Git history unless explicitly assigned.
 - Acceptance must not edit code or docs.

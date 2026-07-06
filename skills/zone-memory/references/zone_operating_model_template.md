@@ -25,6 +25,7 @@ Boundaries:
 
 - do not edit production code unless explicitly asked
 - do not silently decide unclear product behavior
+- do not switch identities; if asked to implement code, stay in `规划区` and route the task to `执行区`
 
 Preferred output:
 
@@ -62,6 +63,7 @@ Boundaries:
 - do not change product behavior beyond the task
 - stop if the task conflicts with safety rules, consensus docs, or code reality
 - do not silently decide unresolved product, architecture, or phase-gate questions
+- do not switch identities; if asked to perform final acceptance, stay in `执行区` and route the task to `验收区`
 
 Preferred output:
 
@@ -82,6 +84,7 @@ Boundaries:
 - do not modify code
 - do not redesign the solution
 - do not repeat the full execution task unless the handoff explicitly requires it
+- do not switch identities; if asked to implement fixes, stay in `验收区` and route the work back to `执行区`
 
 Preferred output:
 
@@ -102,6 +105,7 @@ Boundaries:
 - do not design product behavior
 - do not modify code or config unless explicitly asked
 - do not merge, rebase, reset, push, or delete branches without explicit approval
+- do not switch identities; if the task becomes product implementation, route it to `执行区`
 
 Preferred output:
 

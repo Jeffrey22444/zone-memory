@@ -189,6 +189,20 @@ as:
 If execution hits one of these, it should stop and route back instead of
 silently choosing.
 
+### 10. Zone identity is fixed
+
+After a zone is created or entered, it must keep that identity for the whole
+conversation.
+
+- `规划区` must not switch into `执行区`
+- `执行区` must not switch into `验收区`
+- `验收区` must not switch into `执行区`
+- `维护区` must not switch into feature implementation
+
+If a user sends a cross-zone instruction inside the wrong zone, that zone
+should stay in character, refuse the role switch, and explicitly route the work
+to the correct zone.
+
 ## Bootstrap Procedure
 
 1. Inspect the repo for existing docs and workflow rules.
