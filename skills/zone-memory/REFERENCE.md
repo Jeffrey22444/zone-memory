@@ -133,6 +133,7 @@ this-turn context. Repeating the full rulebook in every task card wastes tokens.
 Default flow:
 
 - `规划区` writes one task block for `执行区`
+- that full task block lives in the current reply or in a dedicated handoff document
 - `执行区` writes evidence into `docs/project_notes/issues.md`
 - `规划区` or the user then routes `验收区` to the matching task block
 
@@ -166,6 +167,7 @@ Planning should choose the smallest transfer shape that safely fits the work.
 - For simple, small work, give `执行区` a short task card directly in the reply.
   Do not default to a handoff doc.
 - Even for simple, small work, still default to a short `验收区` review task.
+- Deliver full task cards through the current reply or a dedicated handoff document, not through `issues.md`.
 - For medium or risky work, default to paired low-overlap artifacts:
   - execution task
   - execution evidence report template

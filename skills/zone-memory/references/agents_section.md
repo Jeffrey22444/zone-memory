@@ -74,6 +74,7 @@ Every execution task gets a short Acceptance Contract and, by default, an indepe
 
 - For simple, small execution work, Planning should give `执行区` a short task card directly in the reply. Do not default to a handoff doc.
 - Even when Planning uses a short task card, it should still default to a short `验收区` review task.
+- Full task cards should be carried in the current reply or in a handoff document, not pasted in full into `docs/project_notes/issues.md`.
 - Use a handoff doc only for more complex work that needs a longer transfer artifact. In that case, end the reply with a copy-ready block that includes the absolute path to the handoff doc plus a short prompt the user can paste directly into `执行区`.
 - When Planning uses a handoff doc for complex work, default to including a second copy-ready block in the same reply for `验收区`.
 - Prefer `path + prompt` blocks over bare links or path-only references when a handoff doc is actually used.
