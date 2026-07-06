@@ -52,7 +52,7 @@ Use this skill to set up a lean project operating system:
 - Keep `issues.md` two-layered: current summary first, chronological log below.
 - Keep `key_facts.md` stable-facts-first; drift-prone items go in a short "Last Verified Environment" section.
 - Every execution task gets a short Acceptance Contract.
-- A separate Acceptance pass is required only for risky, user-critical, or explicitly requested work.
+- By default, every execution task also gets an independent `验收区` review pass unless the user explicitly says to skip it.
 - For medium or risky work, planning should usually prepare four low-overlap artifacts:
   - execution task
   - execution evidence report template
@@ -83,9 +83,16 @@ Use this skill to set up a lean project operating system:
 7. Prefer the portable path: tell the user to create four zones manually and provide the four copy-ready prompts from `references/opening_prompts.md`.
 8. Only when the platform supports thread creation should the skill auto-create four Chinese-named zones and prefill their opening messages.
 9. Keep the opening prompts strict about first-reply brevity in empty or newly bootstrapped workspaces.
-10. When generating task cards, keep the required read set small and use explicit on-demand read triggers for unchanged docs.
-11. When generating execution and acceptance handoffs, direct `执行区` to write evidence into `docs/project_notes/issues.md` and direct `验收区` to read the latest matching task block there instead of relying on user paste-through.
-12. Keep the diff minimal; do not add extra zones or files unless the project actually needs them.
+10. Choose `short task card` versus `full handoff` based on task complexity, not based on whether `验收区` will be involved.
+11. Treat a task as complex and prefer a handoff when at least two of these are true:
+   - it touches multiple files or modules
+   - it contains unresolved product or architecture ambiguity
+   - it has meaningful regression risk
+   - it needs multi-step or manual verification
+   - it mixes implementation with migration, cleanup, or other coordinated work
+12. Use a short task card when the goal is narrow, the behavior is already clear, and verification is short.
+13. When generating execution and acceptance handoffs, direct `执行区` to write evidence into `docs/project_notes/issues.md` and direct `验收区` to read the latest matching task block there instead of relying on user paste-through.
+14. Keep the diff minimal; do not add extra zones or files unless the project actually needs them.
 
 ## References
 

@@ -79,9 +79,9 @@ Use full `/private/tmp` handoffs only for:
 
 Avoid rule drift. Use this rule everywhere:
 
-`Every execution task gets a short Acceptance Contract. A separate Acceptance pass is required only for risky, user-critical, or explicitly requested work.`
+`Every execution task gets a short Acceptance Contract and, by default, an independent Acceptance review pass. Skip the Acceptance zone only when the user explicitly says to skip it.`
 
-That keeps the contract cheap while avoiding forced review loops for trivial work.
+That keeps the contract cheap while still preserving an independent second look.
 
 ### 2. `issues.md` needs a live summary block
 
@@ -132,13 +132,33 @@ Default flow:
 Avoid making the user manually relay long execution evidence between zones when
 the project notes can carry that state.
 
-### 6. Planning outputs must be copy-ready
+### 7. Task card versus handoff is a complexity choice
+
+Treat these as separate questions:
+
+- Should this use a short task card or a full handoff?
+- Should `验收区` review it?
+
+The first question is about transfer size. The second is about independent
+review. Do not collapse them into one rule.
+
+Default complexity rule:
+
+- use a short task card for narrow, clear, low-ambiguity work with short verification
+- use a full handoff when at least two of these are true:
+  - multiple files or modules are involved
+  - product or architecture ambiguity must be locked down
+  - regression risk is meaningful
+  - verification is multi-step or manual
+  - implementation is mixed with migration, cleanup, or coordinated follow-up
+
+### 8. Planning outputs must be copy-ready
 
 Planning should choose the smallest transfer shape that safely fits the work.
 
 - For simple, small work, give `执行区` a short task card directly in the reply.
-  Do not default to a handoff doc, and do not default to a separate `验收区`
-  task.
+  Do not default to a handoff doc.
+- Even for simple, small work, still default to a short `验收区` review task.
 - For medium or risky work, default to paired low-overlap artifacts:
   - execution task
   - execution evidence report template
@@ -156,7 +176,7 @@ Planning should choose the smallest transfer shape that safely fits the work.
   to invent strategy, product behavior, runtime choice, storage design, or
   other unresolved user decisions.
 
-### 7. No silent execution decisions
+### 9. No silent execution decisions
 
 Planning should explicitly mark items that remain under Planning control, such
 as:

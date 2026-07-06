@@ -9,7 +9,7 @@
 - Do not split work so finely that `执行区` loses momentum; prefer medium-sized coherent slices with clear gates.
 - Use `/private/tmp` handoffs only for complex, risky, ambiguous, multi-stage, or failed-acceptance work.
 - Every execution task gets a short Acceptance Contract.
-- A separate Acceptance pass is required only for risky, user-critical, or explicitly requested work.
+- By default, every execution task also gets an independent `验收区` review pass unless the user explicitly says to skip it.
 
 ## Planning
 
@@ -30,10 +30,20 @@ Preferred output:
 
 - short discussion and recommendation first
 - then either a short task card or a full handoff when complexity warrants it
-- for simple, small work, give `执行区` a short task card directly and do not default to a separate `验收区` task
+- for simple, small work, give `执行区` a short task card directly and still default to a short `验收区` review task
 - when routing complex work with a handoff doc, end with a copy-ready block for `执行区`: absolute path plus a short prompt
 - when a handoff doc is used for complex work, default to including a second copy-ready block for `验收区`
 - when pairing execution and acceptance, avoid duplicate reading and duplicate test instructions unless risk warrants it
+
+Complexity rule:
+
+- use a short task card when the scope is narrow, the behavior is already clear, and verification is short
+- use a full handoff when at least two of these are true:
+  - multiple files or modules are involved
+  - product or architecture ambiguity must be locked down
+  - regression risk is meaningful
+  - verification is multi-step or manual
+  - implementation is mixed with migration, cleanup, or coordinated follow-up
 
 ## Execution
 

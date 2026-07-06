@@ -53,7 +53,7 @@ This project keeps institutional knowledge in `docs/project_notes/`.
 
 ### Acceptance Routing Rule
 
-Every execution task gets a short Acceptance Contract. A separate Acceptance pass is required only for risky, user-critical, or explicitly requested work.
+Every execution task gets a short Acceptance Contract and, by default, an independent `验收区` review pass. Skip `验收区` only when the user explicitly says to skip it.
 
 ### Execution And Acceptance Split
 
@@ -68,12 +68,23 @@ Every execution task gets a short Acceptance Contract. A separate Acceptance pas
 
 ### Planning Handoff Output Preference
 
-- For simple, small execution work, Planning should give `执行区` a short task card directly in the reply. Do not default to a handoff doc, and do not default to a separate `验收区` task.
+- For simple, small execution work, Planning should give `执行区` a short task card directly in the reply. Do not default to a handoff doc.
+- Even when Planning uses a short task card, it should still default to a short `验收区` review task.
 - Use a handoff doc only for more complex work that needs a longer transfer artifact. In that case, end the reply with a copy-ready block that includes the absolute path to the handoff doc plus a short prompt the user can paste directly into `执行区`.
 - When Planning uses a handoff doc for complex work, default to including a second copy-ready block in the same reply for `验收区`.
 - Prefer `path + prompt` blocks over bare links or path-only references when a handoff doc is actually used.
 - Mark unresolved product, runtime, storage, or architecture choices explicitly so `执行区` does not decide them silently.
 - Zone threads created by this workflow should use the Chinese names `规划区`、`执行区`、`验收区`、`维护区` by default.
+
+### Complexity Rule
+
+- Use a short task card when the scope is narrow, the behavior is already clear, and verification is short.
+- Use a handoff doc when at least two of these are true:
+  - multiple files or modules are involved
+  - product or architecture ambiguity must be locked down
+  - regression risk is meaningful
+  - verification is multi-step or manual
+  - implementation is mixed with migration, cleanup, or coordinated follow-up
 
 ### Editing Rules
 
