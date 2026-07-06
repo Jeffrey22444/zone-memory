@@ -121,6 +121,17 @@ This keeps the log searchable without turning each entry into a report.
 Zone opening prompts should point to stable docs by path and only add
 this-turn context. Repeating the full rulebook in every task card wastes tokens.
 
+### 6. Prefer two-hop handoff over user relay
+
+Default flow:
+
+- `规划区` writes one task block for `执行区`
+- `执行区` writes evidence into `docs/project_notes/issues.md`
+- `规划区` or the user then routes `验收区` to the matching task block
+
+Avoid making the user manually relay long execution evidence between zones when
+the project notes can carry that state.
+
 ### 6. Planning outputs must be copy-ready
 
 Planning should choose the smallest transfer shape that safely fits the work.

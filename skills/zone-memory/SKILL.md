@@ -47,6 +47,8 @@ Use this skill to set up a lean project operating system:
 
 - Keep stable rules in `AGENTS.md` and `zone_operating_model.md`, not in every prompt.
 - Task cards should default to a minimum required read set; route unchanged product, architecture, or phase docs as on-demand reads instead of mandatory rereads.
+- Default to a two-hop flow: `规划区` sends one task block to `执行区`, then one task block to `验收区`; execution evidence should be written back into `docs/project_notes/issues.md` instead of manually relayed by the user.
+- No zone should read `issues.md` end to end by default; read `Current Summary` plus the latest log block for the current task ID.
 - Keep `issues.md` two-layered: current summary first, chronological log below.
 - Keep `key_facts.md` stable-facts-first; drift-prone items go in a short "Last Verified Environment" section.
 - Every execution task gets a short Acceptance Contract.
@@ -82,7 +84,8 @@ Use this skill to set up a lean project operating system:
 8. Only when the platform supports thread creation should the skill auto-create four Chinese-named zones and prefill their opening messages.
 9. Keep the opening prompts strict about first-reply brevity in empty or newly bootstrapped workspaces.
 10. When generating task cards, keep the required read set small and use explicit on-demand read triggers for unchanged docs.
-11. Keep the diff minimal; do not add extra zones or files unless the project actually needs them.
+11. When generating execution and acceptance handoffs, direct `执行区` to write evidence into `docs/project_notes/issues.md` and direct `验收区` to read the latest matching task block there instead of relying on user paste-through.
+12. Keep the diff minimal; do not add extra zones or files unless the project actually needs them.
 
 ## References
 
