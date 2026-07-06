@@ -2,6 +2,16 @@
 
 Use this file for the current summary, plans, execution progress, acceptance results, maintenance findings, and blockers.
 
+Store excerpts only:
+
+- task IDs
+- 1-2 line task summaries
+- locked decisions
+- evidence summaries
+- links or paths to longer artifacts when needed
+
+Do not paste the full text of every task card or full handoff into this file.
+
 ## Current State
 
 - **Current phase**:

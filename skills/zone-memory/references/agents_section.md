@@ -30,6 +30,7 @@ This project keeps institutional knowledge in `docs/project_notes/`.
 - Before debugging an error, search `docs/project_notes/bugs.md`.
 - Before assuming project configuration, check `docs/project_notes/key_facts.md`.
 - Update `docs/project_notes/issues.md` with meaningful work progress and completion notes.
+- Keep `docs/project_notes/issues.md` summary-first and excerpt-only: task IDs, short summaries, decisions, evidence notes, and links or paths, not full task-card bodies.
 - When resolving a reusable bug, add or update `docs/project_notes/bugs.md`.
 - When making or changing a durable decision, add or update `docs/project_notes/decisions.md`.
 - Do not store secrets, tokens, passwords, private keys, credential JSON, or credential values in project notes.

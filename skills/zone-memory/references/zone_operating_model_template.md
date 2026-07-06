@@ -6,6 +6,7 @@
 - Do not repeat stable project rules in every prompt; reference `AGENTS.md`, this file, product consensus docs, architecture docs, and the implementation plan.
 - Start with 3-5 files to read, then expand only when needed.
 - Prefer short task cards over full handoffs for small and medium work.
+- Keep `issues.md` excerpt-only; use it for summaries and routing, not for storing full task cards.
 - Do not split work so finely that `执行区` loses momentum; prefer medium-sized coherent slices with clear gates.
 - Use `/private/tmp` handoffs only for complex, risky, ambiguous, multi-stage, or failed-acceptance work.
 - Every execution task gets a short Acceptance Contract.

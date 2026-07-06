@@ -50,6 +50,7 @@ Use this skill to set up a lean project operating system:
 - Default to a two-hop flow: `规划区` sends one task block to `执行区`, then one task block to `验收区`; execution evidence should be written back into `docs/project_notes/issues.md` instead of manually relayed by the user.
 - No zone should read `issues.md` end to end by default; read `Current Summary` plus the latest log block for the current task ID.
 - Keep `issues.md` two-layered: current summary first, chronological log below.
+- `issues.md` should store only task summaries, task IDs, decision notes, evidence summaries, and routing pointers. Do not store the full text of every task card or full handoff there.
 - Keep `key_facts.md` stable-facts-first; drift-prone items go in a short "Last Verified Environment" section.
 - Every execution task gets a short Acceptance Contract.
 - By default, every execution task also gets an independent `验收区` review pass unless the user explicitly says to skip it.

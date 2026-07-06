@@ -116,6 +116,13 @@ Each execution entry in `issues.md` should prefer:
 
 This keeps the log searchable without turning each entry into a report.
 
+`issues.md` is a worklog and routing surface, not the canonical home for full
+task cards.
+
+- store task IDs, 1-2 line summaries, locked decisions, evidence summaries, and links or paths
+- do not store the full text of every task card there
+- do not store the full text of every handoff there
+
 ### 5. Prompts should reference stable docs, not restate them
 
 Zone opening prompts should point to stable docs by path and only add
@@ -172,6 +179,8 @@ Planning should choose the smallest transfer shape that safely fits the work.
   short prompt for `验收区` in the same reply.
 - Keep `issues.md` minimal: current recommended next task plus a short decision
   summary. Do not store paste-ready prompts there.
+- Keep task records in `issues.md` as excerpts only. Other zones should not need
+  to reread a full task card there.
 - Every execution task card must be specific enough that `执行区` does not need
   to invent strategy, product behavior, runtime choice, storage design, or
   other unresolved user decisions.
