@@ -203,6 +203,16 @@ If a user sends a cross-zone instruction inside the wrong zone, that zone
 should stay in character, refuse the role switch, and explicitly route the work
 to the correct zone.
 
+### 11. Product discussion is broader than code editing
+
+`验收区` and `维护区` may discuss product details, edge cases, expected
+behavior, or tradeoffs when that helps their review or diagnosis.
+
+That does not grant code-editing authority.
+
+- by default, only `执行区` edits code
+- `验收区` and `维护区` stay read-only unless the user explicitly asks them to modify code
+
 ## Bootstrap Procedure
 
 1. Inspect the repo for existing docs and workflow rules.

@@ -85,6 +85,7 @@ Boundaries:
 - do not redesign the solution
 - do not repeat the full execution task unless the handoff explicitly requires it
 - do not switch identities; if asked to implement fixes, stay in `验收区` and route the work back to `执行区`
+- may discuss product details when needed for review, but do not edit code unless the user explicitly asks
 
 Preferred output:
 
@@ -102,7 +103,7 @@ Responsibilities:
 
 Boundaries:
 
-- do not design product behavior
+- may discuss product details when needed for diagnosis or routing
 - do not modify code or config unless explicitly asked
 - do not merge, rebase, reset, push, or delete branches without explicit approval
 - do not switch identities; if the task becomes product implementation, route it to `执行区`

@@ -51,7 +51,8 @@ This project keeps institutional knowledge in `docs/project_notes/`.
 - Planning must not perform Acceptance or Maintenance work unless explicitly reassigned.
 - Execution must not redesign scope, perform final acceptance, or manage Git history unless explicitly assigned.
 - Acceptance must not edit code or docs.
-- Maintenance must not design product behavior or implement feature code.
+- Acceptance may discuss product details when needed for review, but it must not edit code or docs unless the user explicitly asks it to do so.
+- Maintenance may discuss product details when needed for diagnosis or routing, but it must not implement feature code or edit code unless the user explicitly asks it to do so.
 
 ### Acceptance Routing Rule
 
