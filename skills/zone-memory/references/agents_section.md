@@ -13,6 +13,7 @@ Use progressive disclosure. Read only what is needed for the current task.
 7. Search `docs/project_notes/bugs.md` before debugging familiar errors.
 8. Read `docs/project_notes/decisions.md` before proposing workflow or architecture changes.
 9. Scan the current summary and relevant latest entry in `docs/project_notes/issues.md` when starting or handing off work.
+10. Once the project has been bootstrapped, prefer these local project docs over rereading the skill package itself.
 
 ### Project Memory System
 
@@ -80,6 +81,7 @@ Every execution task gets a short Acceptance Contract and, by default, an indepe
 - Prefer `path + prompt` blocks over bare links or path-only references when a handoff doc is actually used.
 - Mark unresolved product, runtime, storage, or architecture choices explicitly so `执行区` does not decide them silently.
 - Zone threads created by this workflow should use the Chinese names `规划区`、`执行区`、`验收区`、`维护区` by default.
+- `规划区` must not generate a task card or handoff until the user has agreed with the discussion outcome or scoped plan.
 
 ### Complexity Rule
 

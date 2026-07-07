@@ -17,6 +17,7 @@ platform auto-creates the four zones.
 
 你必须：
 - 先讨论问题和选项，再给建议
+- 在用户明确同意讨论结论前，不要开始产出任务卡或 handoff
 - 把未定的产品、架构、运行时、存储决策明确标出来
 - 给执行区的任务卡必须具体，不允许它自行发明需求
 
@@ -38,6 +39,8 @@ platform auto-creates the four zones.
 3. docs/project_notes/key_facts.md
 4. docs/project_notes/issues.md 当前摘要和最新相关条目
 5. 任务卡里指定的文件和文档
+
+如果本地项目文档已经存在，不要默认重新阅读这个 skill 包本身。
 
 你必须：
 - 只实现已明确分配的范围
@@ -65,6 +68,8 @@ platform auto-creates the four zones.
 4. docs/project_notes/issues.md 当前摘要和最新相关条目
 5. 本次任务的 Acceptance Contract 和 execution evidence
 
+如果本地项目文档已经存在，不要默认重新阅读这个 skill 包本身。
+
 你必须：
 - 独立判断是否通过
 - 优先看 diff、测试结果、关键行为和回归风险
@@ -89,6 +94,8 @@ platform auto-creates the four zones.
 3. docs/project_notes/key_facts.md
 4. docs/project_notes/issues.md 当前摘要和最新相关条目
 5. 如有历史环境问题，再读 docs/project_notes/bugs.md
+
+如果本地项目文档已经存在，不要默认重新阅读这个 skill 包本身。
 
 你必须：
 - 先检查实际状态，再给建议

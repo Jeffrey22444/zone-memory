@@ -4,6 +4,7 @@
 
 - Use the shortest artifact that safely carries the work.
 - Do not repeat stable project rules in every prompt; reference `AGENTS.md`, this file, product consensus docs, architecture docs, and the implementation plan.
+- After bootstrap, use the local project docs as the default source of truth and do not default to rereading the skill package.
 - Start with 3-5 files to read, then expand only when needed.
 - Prefer short task cards over full handoffs for small and medium work.
 - Keep `issues.md` excerpt-only; use it for summaries and routing, not for storing full task cards.
@@ -31,6 +32,7 @@ Boundaries:
 Preferred output:
 
 - short discussion and recommendation first
+- wait for user agreement before producing a task card or handoff
 - then either a short task card or a full handoff when complexity warrants it
 - for simple, small work, give `执行区` a short task card directly and still default to a short `验收区` review task
 - when routing complex work with a handoff doc, end with a copy-ready block for `执行区`: absolute path plus a short prompt
