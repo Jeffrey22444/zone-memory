@@ -8,7 +8,7 @@ Store excerpts only:
 - 1-2 line task summaries
 - locked decisions
 - evidence summaries
-- links or paths to longer artifacts when needed
+- links or paths to longer artifacts when needed, such as `docs/project_notes/current_task.md`
 
 Do not paste the full text of every task card or full handoff into this file.
 

@@ -27,6 +27,10 @@ Use `docs/project_notes/` with these files:
 - `issues.md`
 - `zone_operating_model.md`
 
+For long-running multi-phase projects, optionally add:
+
+- `current_task.md` for the active execution task card and/or current Acceptance Contract only
+
 The names are plain engineering documentation, not AI-specific artifacts.
 
 ### 2.5. Chinese-first zone naming
@@ -183,6 +187,8 @@ Planning should choose the smallest transfer shape that safely fits the work.
   summary. Do not store paste-ready prompts there.
 - Keep task records in `issues.md` as excerpts only. Other zones should not need
   to reread a full task card there.
+- For long-running multi-phase projects, prefer one overwritten
+  `docs/project_notes/current_task.md` active surface over a growing task-card archive.
 - Every execution task card must be specific enough that `执行区` does not need
   to invent strategy, product behavior, runtime choice, storage design, or
   other unresolved user decisions.
@@ -311,6 +317,13 @@ Do not auto-create English-named zone threads unless the user explicitly asks.
 - Put the live summary first.
 - Use the chronological log for plans, execution evidence, acceptance outcomes, maintenance notes, and blockers.
 - When updating, touch only the relevant latest entry when possible.
+
+### `current_task.md` optional
+
+- Use only when a project has enough phases or cross-thread handoffs that one active task file saves tokens.
+- Store the current execution task card and/or current Acceptance Contract only.
+- Overwrite it when the next task starts.
+- Keep history in `issues.md` as concise summaries and evidence, not full prompt archives.
 
 ### `zone_operating_model.md`
 

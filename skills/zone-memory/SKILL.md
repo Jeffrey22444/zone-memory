@@ -9,6 +9,7 @@ Use this skill to set up a lean project operating system:
 
 - Planning / Execution / Acceptance / Maintenance zones
 - `docs/project_notes/` memory files
+- optional `docs/project_notes/current_task.md` active-task surface for long-running multi-phase projects
 - optional tracked `docs/product_consensus/...`, `docs/architecture.md`, and `docs/implementation-plan.md`
 - `AGENTS.md` and optional `CLAUDE.md` protocols
 - Chinese zone naming and opening prompts by default
@@ -48,6 +49,7 @@ Use this skill to set up a lean project operating system:
 - Keep stable rules in `AGENTS.md` and `zone_operating_model.md`, not in every prompt.
 - After bootstrap has created the local project docs, zones should read those local docs by default and should not reread the skill files unless the local docs are missing, stale, or explicitly under revision.
 - Task cards should default to a minimum required read set; route unchanged product, architecture, or phase docs as on-demand reads instead of mandatory rereads.
+- For long-running multi-phase projects, use `docs/project_notes/current_task.md` as an optional active-task surface: overwrite it for each new task and keep history in `issues.md` as summaries and evidence.
 - Default to a two-hop flow: `规划区` sends one task block to `执行区`, then one task block to `验收区`; execution evidence should be written back into `docs/project_notes/issues.md` instead of manually relayed by the user.
 - Full task cards should be delivered through the current conversation reply or a dedicated handoff document, not stored in full inside `docs/project_notes/issues.md`.
 - No zone should read `issues.md` end to end by default; read `Current Summary` plus the latest log block for the current task ID.
@@ -100,10 +102,11 @@ Use this skill to set up a lean project operating system:
    - it needs multi-step or manual verification
    - it mixes implementation with migration, cleanup, or other coordinated work
 14. Use a short task card when the goal is narrow, the behavior is already clear, and verification is short.
-15. When generating execution and acceptance handoffs, deliver the full task card in the current reply or via a handoff document; use `docs/project_notes/issues.md` only for excerpts, evidence summaries, and routing pointers.
-16. Direct `执行区` to write evidence into `docs/project_notes/issues.md` and direct `验收区` to read the latest matching task block there instead of relying on user paste-through.
-17. After a zone has been created, do not let it change identity because of a later prompt. If the user asks `规划区` to write code, `规划区` must stay `规划区` and route the task to `执行区` instead.
-18. Keep the diff minimal; do not add extra zones or files unless the project actually needs them.
+15. If task cards start accumulating across many phases, move the one active execution task card and/or current Acceptance Contract into `docs/project_notes/current_task.md` and overwrite it for the next task instead of growing a prompt archive.
+16. When generating execution and acceptance handoffs, deliver the full task card in the current reply, in `docs/project_notes/current_task.md`, or via a handoff document; use `docs/project_notes/issues.md` only for excerpts, evidence summaries, and routing pointers.
+17. Direct `执行区` to write evidence into `docs/project_notes/issues.md` and direct `验收区` to read the latest matching task block there instead of relying on user paste-through.
+18. After a zone has been created, do not let it change identity because of a later prompt. If the user asks `规划区` to write code, `规划区` must stay `规划区` and route the task to `执行区` instead.
+19. Keep the diff minimal; do not add extra zones or files unless the project actually needs them.
 
 ## References
 

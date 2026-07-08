@@ -8,6 +8,7 @@
 - Start with 3-5 files to read, then expand only when needed.
 - Prefer short task cards over full handoffs for small and medium work.
 - Keep `issues.md` excerpt-only; use it for summaries and routing, not for storing full task cards.
+- For long-running multi-phase projects, use `docs/project_notes/current_task.md` as the one active task surface and overwrite it for each step.
 - Do not split work so finely that `执行区` loses momentum; prefer medium-sized coherent slices with clear gates.
 - Use `/private/tmp` handoffs only for complex, risky, ambiguous, multi-stage, or failed-acceptance work.
 - Every execution task gets a short Acceptance Contract.

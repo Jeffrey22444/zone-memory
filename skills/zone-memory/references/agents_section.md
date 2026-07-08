@@ -24,6 +24,7 @@ This project keeps institutional knowledge in `docs/project_notes/`.
 - `key_facts.md`: non-secret stable project facts plus a short last-verified environment section
 - `issues.md`: current-state summary plus chronological work log
 - `zone_operating_model.md`: zone responsibilities, boundaries, and standard card shapes
+- optional `current_task.md`: the one active execution task card and/or current Acceptance Contract
 
 ### Memory Protocol
 
@@ -32,6 +33,7 @@ This project keeps institutional knowledge in `docs/project_notes/`.
 - Before assuming project configuration, check `docs/project_notes/key_facts.md`.
 - Update `docs/project_notes/issues.md` with meaningful work progress and completion notes.
 - Keep `docs/project_notes/issues.md` summary-first and excerpt-only: task IDs, short summaries, decisions, evidence notes, and links or paths, not full task-card bodies.
+- For long-running multi-phase projects, use `docs/project_notes/current_task.md` as the single active task surface and overwrite it each step.
 - When resolving a reusable bug, add or update `docs/project_notes/bugs.md`.
 - When making or changing a durable decision, add or update `docs/project_notes/decisions.md`.
 - Do not store secrets, tokens, passwords, private keys, credential JSON, or credential values in project notes.
@@ -76,6 +78,7 @@ Every execution task gets a short Acceptance Contract and, by default, an indepe
 - For simple, small execution work, Planning should give `执行区` a short task card directly in the reply. Do not default to a handoff doc.
 - Even when Planning uses a short task card, it should still default to a short `验收区` review task.
 - Full task cards should be carried in the current reply or in a handoff document, not pasted in full into `docs/project_notes/issues.md`.
+- For long-running multi-phase projects, `current_task.md` may hold the one active full task card and/or current Acceptance Contract; do not grow a historical prompt archive there.
 - Use a handoff doc only for more complex work that needs a longer transfer artifact. In that case, end the reply with a copy-ready block that includes the absolute path to the handoff doc plus a short prompt the user can paste directly into `执行区`.
 - When Planning uses a handoff doc for complex work, default to including a second copy-ready block in the same reply for `验收区`.
 - Prefer `path + prompt` blocks over bare links or path-only references when a handoff doc is actually used.
