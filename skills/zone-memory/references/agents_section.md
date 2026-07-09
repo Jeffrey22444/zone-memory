@@ -66,6 +66,8 @@ Every execution task gets a short Acceptance Contract and, by default, an indepe
 
 - Execution evidence is not acceptance.
 - Default acceptance input is: `Acceptance Contract + execution evidence + current diff`.
+- Acceptance results may be `通过`, `部分通过`, or `不通过`.
+- Use `部分通过` when the task itself passes but unrelated or unexpected extra file modifications require user confirmation.
 - For medium or risky work, Planning should usually prepare:
   - one execution task
   - one execution evidence report template

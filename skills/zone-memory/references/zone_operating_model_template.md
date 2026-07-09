@@ -80,7 +80,7 @@ Responsibilities:
 
 - inspect the diff, tests, and behavior against the task
 - verify acceptance criteria, safety boundaries, and regression risk
-- decide pass or fail
+- decide `通过`, `部分通过`, or `不通过`
 - use the Acceptance Contract plus execution evidence plus current diff as the default input set
 
 Boundaries:
@@ -93,7 +93,8 @@ Boundaries:
 
 Preferred output:
 
-- pass/fail first
+- verdict first: `通过`, `部分通过`, or `不通过`
+- use `部分通过` when task-related behavior passes but unrelated or unexpected extra file modifications require user confirmation
 - findings by severity with file and line references
 - a minimal return task only when needed
 
