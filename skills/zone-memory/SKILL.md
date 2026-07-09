@@ -41,10 +41,19 @@ Use this skill to set up a lean project operating system:
 ## Defaults
 
 - Keep stable rules in `AGENTS.md` and `zone_operating_model.md`, not in every prompt.
+- After bootstrap, read local project docs by default and do not reread the packaged skill files unless the workflow itself is being revised.
+- Default startup read set for any zone is only:
+  - `AGENTS.md` or `CLAUDE.md` workflow section
+  - `docs/project_notes/zone_operating_model.md`
+  - `docs/project_notes/key_facts.md`
+  - `docs/project_notes/issues.md` Current Summary plus the relevant latest block
+- Read `docs/project_notes/current_task.md` only when the active task or Acceptance Contract has been parked there.
 - Task cards should default to a minimum required read set; route unchanged product, architecture, or phase docs as on-demand reads instead of mandatory rereads.
+- Do not wake all four zones by default. Only involve the zones that have a concrete job for the current slice.
+- For small, clear, low-risk work, prefer one active working zone plus the minimum necessary handoff instead of a full four-zone relay.
 - For long-running multi-phase projects, use `docs/project_notes/current_task.md` as an optional active task surface: overwrite it for each new task, and keep history in `issues.md` as concise summaries and evidence instead of full prompts.
 - When `current_task.md` is the active task surface, Planning should not repeat the full task card in the chat reply; end with short copy-ready prompts that tell `执行区` or `验收区` to read `current_task.md` and name the task ID.
-- Default to a two-hop flow: `规划区` sends one task block to `执行区`, then one task block to `验收区`; execution evidence should be written back into `docs/project_notes/issues.md` instead of manually relayed by the user.
+- For medium or risky work, use a two-hop flow: `规划区` sends one task block to `执行区`, then one task block to `验收区`; execution evidence should be written back into `docs/project_notes/issues.md` instead of manually relayed by the user.
 - No zone should read `issues.md` end to end by default; read `Current Summary` plus the latest log block for the current task ID.
 - Keep `issues.md` two-layered: current summary first, chronological log below.
 - Keep `key_facts.md` stable-facts-first; drift-prone items go in a short "Last Verified Environment" section.
@@ -70,6 +79,15 @@ Use this skill to set up a lean project operating system:
   - `执行区`: `gpt-5.5` with `medium` thinking
   - `验收区`: `gpt-5.4` with `medium` thinking
   - `维护区`: `gpt-5.4` with `medium` thinking
+
+## Ultra-Lean Operation
+
+- Bootstrap once, then operate from local docs rather than rereading the skill package.
+- Keep the startup read set small and explicit. Additional docs are on-demand reads, not default reads.
+- Use `current_task.md` as the active-task compression surface when task cards would otherwise start piling up.
+- Skip `验收区` for trivial low-risk work unless the user asks for it.
+- Skip `维护区` unless the task actually involves Git state, environment state, dependency state, or runtime hygiene.
+- If a zone already has enough context to finish a narrow task safely, do not re-open the same context in other zones just for symmetry.
 
 ## Workflow
 

@@ -7,12 +7,15 @@ Use progressive disclosure. Read only what is needed for the current task.
 1. Read this file first.
 2. Read `docs/project_notes/zone_operating_model.md`.
 3. Read `docs/project_notes/key_facts.md` before assuming commands, paths, ports, or conventions.
-4. Read `docs/product_consensus/...` before discussing or changing product or strategy behavior.
-5. Read `docs/architecture.md` before changing module boundaries, data flow, or dependency direction.
-6. Read `docs/implementation-plan.md` before sequencing phases, deliverables, or verification gates.
-7. Search `docs/project_notes/bugs.md` before debugging familiar errors.
-8. Read `docs/project_notes/decisions.md` before proposing workflow or architecture changes.
-9. Scan the current summary and relevant latest entry in `docs/project_notes/issues.md` when starting or handing off work.
+4. Scan the current summary and relevant latest entry in `docs/project_notes/issues.md` when starting or handing off work.
+5. Read `docs/project_notes/current_task.md` only when the active task or Acceptance Contract lives there.
+6. Read `docs/product_consensus/...` before discussing or changing product or strategy behavior.
+7. Read `docs/architecture.md` before changing module boundaries, data flow, or dependency direction.
+8. Read `docs/implementation-plan.md` before sequencing phases, deliverables, or verification gates.
+9. Search `docs/project_notes/bugs.md` before debugging familiar errors.
+10. Read `docs/project_notes/decisions.md` before proposing workflow or architecture changes.
+
+Do not read every file in this list by default. Items 1-4 are the default startup read set. Everything else is on-demand.
 
 ### Project Memory System
 
@@ -34,6 +37,7 @@ This project keeps institutional knowledge in `docs/project_notes/`.
 - For long-running multi-phase projects, keep detailed active prompts in `docs/project_notes/current_task.md` and overwrite it each step; keep `issues.md` to concise summaries and evidence.
 - When resolving a reusable bug, add or update `docs/project_notes/bugs.md`.
 - When making or changing a durable decision, add or update `docs/project_notes/decisions.md`.
+- After bootstrap, do not reread the packaged skill files during ordinary project work unless the workflow itself is under revision.
 - Do not store secrets, tokens, passwords, private keys, credential JSON, or credential values in project notes.
 
 ### Zone Defaults
@@ -42,6 +46,7 @@ This project keeps institutional knowledge in `docs/project_notes/`.
 - Execution implements only clearly assigned work, uses the smallest working change, and gathers evidence.
 - Acceptance reviews only, returns pass/fail plus findings, and does not modify code.
 - Maintenance inspects Git, environment, dependencies, runtime state, and mainline hygiene.
+- Do not wake a zone unless it has a concrete job for the current slice.
 
 ### Zone Identity And Boundaries
 
@@ -79,6 +84,12 @@ Every execution task gets a short Acceptance Contract. A separate Acceptance pas
 - When `current_task.md` is the active copy-ready surface, Planning should not repeat the full task card in the chat reply; end with short paste-ready prompts that tell `执行区` or `验收区` to read `current_task.md` and name the task ID.
 - Mark unresolved product, runtime, storage, or architecture choices explicitly so `执行区` does not decide them silently.
 - Zone threads created by this workflow should use the Chinese names `规划区`、`执行区`、`验收区`、`维护区` by default.
+
+### Ultra-Lean Routing
+
+- For trivial low-risk work, one active working zone plus one short handoff is enough.
+- Add `验收区` when the work is risky, user-critical, or explicitly requested for review.
+- Add `维护区` only when Git state, environment state, dependencies, or runtime hygiene are actually part of the task.
 
 ### Planning Verification Defaults
 

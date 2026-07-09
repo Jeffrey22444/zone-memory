@@ -4,7 +4,11 @@
 
 - Use the shortest artifact that safely carries the work.
 - Do not repeat stable project rules in every prompt; reference `AGENTS.md`, this file, product consensus docs, architecture docs, and the implementation plan.
-- Start with 3-5 files to read, then expand only when needed.
+- Start with only these files, then expand only when needed:
+  - `AGENTS.md` or `CLAUDE.md` workflow section
+  - this file
+  - `docs/project_notes/key_facts.md`
+  - `docs/project_notes/issues.md` Current Summary plus the relevant latest block
 - Prefer short task cards over full handoffs for small and medium work.
 - Do not split work so finely that `执行区` loses momentum; prefer medium-sized coherent slices with clear gates.
 - Use `/private/tmp` handoffs only for complex, risky, ambiguous, multi-stage, or failed-acceptance work.
@@ -12,6 +16,8 @@
 - Treat old task-card files as archives; do not append detailed task cards there by default.
 - Every execution task gets a short Acceptance Contract.
 - A separate Acceptance pass is required only for risky, user-critical, or explicitly requested work.
+- Do not wake all four zones by default. Activate only the zones that have a concrete job for the current slice.
+- After bootstrap, do not reread the packaged skill files during ordinary project work unless the workflow itself is being revised.
 
 ## Planning
 
@@ -52,6 +58,7 @@ Responsibilities:
 
 - read the relevant docs, task card, and memory files
 - if `current_task.md` exists, read it for the assigned active task; do not scan historical task-card archives unless the current task explicitly says to
+- do not open product, architecture, implementation-plan, bugs, or decisions docs unless the task actually triggers them
 - implement the smallest working change
 - reuse existing patterns
 - run focused verification
@@ -79,6 +86,7 @@ Responsibilities:
 - decide pass or fail
 - use the Acceptance Contract plus execution evidence plus current diff as the default input set
 - if `current_task.md` exists, read the current Acceptance Contract there
+- do not reread the full execution history when the current task block and latest evidence block are enough
 
 Boundaries:
 
@@ -185,3 +193,5 @@ Three-line handoff:
 ## Anti-Patterns
 
 - Do not keep appending full task cards to a growing archive when `current_task.md` is enough.
+- Do not reread the whole project-note set when the startup read set already answers the current slice.
+- Do not wake unused zones just because they exist.

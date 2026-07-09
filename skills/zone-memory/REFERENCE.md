@@ -125,7 +125,28 @@ This keeps the log searchable without turning each entry into a report.
 Zone opening prompts should point to stable docs by path and only add
 this-turn context. Repeating the full rulebook in every task card wastes tokens.
 
-### 6. Planning outputs must be copy-ready
+### 6. Ultra-lean startup profile
+
+After bootstrap, default every zone to this startup read set only:
+
+- `AGENTS.md` or `CLAUDE.md` workflow section
+- `docs/project_notes/zone_operating_model.md`
+- `docs/project_notes/key_facts.md`
+- `docs/project_notes/issues.md` Current Summary plus the latest relevant block
+
+Add these only on demand:
+
+- `docs/project_notes/current_task.md` when the active task or Acceptance Contract is parked there
+- `docs/project_notes/decisions.md` before workflow or architecture changes
+- `docs/project_notes/bugs.md` before debugging a likely-known issue
+- `docs/product_consensus/...` before product or strategy behavior changes
+- `docs/architecture.md` before boundary or dependency changes
+- `docs/implementation-plan.md` before phase or gate changes
+
+Do not reread the packaged skill files during ordinary project work unless the
+workflow itself is being revised.
+
+### 7. Planning outputs must be copy-ready
 
 Planning should choose the smallest transfer shape that safely fits the work.
 
@@ -156,7 +177,17 @@ Planning should choose the smallest transfer shape that safely fits the work.
   to invent strategy, product behavior, runtime choice, storage design, or
   other unresolved user decisions.
 
-### 7. No silent execution decisions
+### 8. Activate only the zones you need
+
+Do not wake all four zones for every slice.
+
+- trivial, low-risk, clear work: one active working zone plus at most one short handoff
+- medium or risky work: Planning plus Execution, and Acceptance when review is in scope
+- Maintenance: only when Git state, environment state, dependencies, or runtime hygiene are actually part of the task
+
+Symmetry is not a goal. Lower context load is.
+
+### 9. No silent execution decisions
 
 Planning should explicitly mark items that remain under Planning control, such
 as:
@@ -248,6 +279,7 @@ Do not auto-create English-named zone threads unless the user explicitly asks.
 - Use the chronological log for plans, execution evidence, acceptance outcomes, maintenance notes, and blockers.
 - When updating, touch only the relevant latest entry when possible.
 - Keep detailed task cards and paste-ready prompts out of this file; record concise task intent, changed files, evidence, blockers, and acceptance outcomes instead.
+- Keep the Current Summary short enough that a new zone can read it quickly without paying for a mini project-history replay.
 
 ### `current_task.md` optional
 
