@@ -13,7 +13,6 @@ Use progressive disclosure. Read only what is needed for the current task.
 7. Search `docs/project_notes/bugs.md` before debugging familiar errors.
 8. Read `docs/project_notes/decisions.md` before proposing workflow or architecture changes.
 9. Scan the current summary and relevant latest entry in `docs/project_notes/issues.md` when starting or handing off work.
-10. Once the project has been bootstrapped, prefer these local project docs over rereading the skill package itself.
 
 ### Project Memory System
 
@@ -24,7 +23,7 @@ This project keeps institutional knowledge in `docs/project_notes/`.
 - `key_facts.md`: non-secret stable project facts plus a short last-verified environment section
 - `issues.md`: current-state summary plus chronological work log
 - `zone_operating_model.md`: zone responsibilities, boundaries, and standard card shapes
-- optional `current_task.md`: the one active execution task card and/or current Acceptance Contract
+- Optional `current_task.md`: current active task or Acceptance Contract only; overwrite it when the next task starts
 
 ### Memory Protocol
 
@@ -32,8 +31,7 @@ This project keeps institutional knowledge in `docs/project_notes/`.
 - Before debugging an error, search `docs/project_notes/bugs.md`.
 - Before assuming project configuration, check `docs/project_notes/key_facts.md`.
 - Update `docs/project_notes/issues.md` with meaningful work progress and completion notes.
-- Keep `docs/project_notes/issues.md` summary-first and excerpt-only: task IDs, short summaries, decisions, evidence notes, and links or paths, not full task-card bodies.
-- For long-running multi-phase projects, use `docs/project_notes/current_task.md` as the single active task surface and overwrite it each step.
+- For long-running multi-phase projects, keep detailed active prompts in `docs/project_notes/current_task.md` and overwrite it each step; keep `issues.md` to concise summaries and evidence.
 - When resolving a reusable bug, add or update `docs/project_notes/bugs.md`.
 - When making or changing a durable decision, add or update `docs/project_notes/decisions.md`.
 - Do not store secrets, tokens, passwords, private keys, credential JSON, or credential values in project notes.
@@ -50,24 +48,20 @@ This project keeps institutional knowledge in `docs/project_notes/`.
 - Each agent must keep track of the active zone and stay inside that zone's responsibilities.
 - If the active zone is unclear, stop and ask the user to confirm it before doing substantive work.
 - A zone must not silently take over another zone's job.
-- Once a zone conversation has been created or entered, that zone's identity is fixed for the rest of the conversation.
-- If a user asks the current zone to do another zone's job, the current zone must refuse the role switch and route the task to the correct zone.
 - Planning must not perform Acceptance or Maintenance work unless explicitly reassigned.
 - Execution must not redesign scope, perform final acceptance, or manage Git history unless explicitly assigned.
 - Acceptance must not edit code or docs.
-- Acceptance may discuss product details when needed for review, but it must not edit code or docs unless the user explicitly asks it to do so.
-- Maintenance may discuss product details when needed for diagnosis or routing, but it must not implement feature code or edit code unless the user explicitly asks it to do so.
+- Maintenance must not design product behavior or implement feature code.
 
 ### Acceptance Routing Rule
 
-Every execution task gets a short Acceptance Contract and, by default, an independent `验收区` review pass. Skip `验收区` only when the user explicitly says to skip it.
+Every execution task gets a short Acceptance Contract. A separate Acceptance pass is required only for risky, user-critical, or explicitly requested work.
 
 ### Execution And Acceptance Split
 
 - Execution evidence is not acceptance.
 - Default acceptance input is: `Acceptance Contract + execution evidence + current diff`.
-- Acceptance results may be `通过`, `部分通过`, or `不通过`.
-- Use `部分通过` when the task itself passes but unrelated or unexpected extra file modifications require user confirmation.
+- If `docs/project_notes/current_task.md` exists, `执行区` should read the active task there and `验收区` should read the current Acceptance Contract there instead of scanning historical task-card archives.
 - For medium or risky work, Planning should usually prepare:
   - one execution task
   - one execution evidence report template
@@ -77,26 +71,21 @@ Every execution task gets a short Acceptance Contract and, by default, an indepe
 
 ### Planning Handoff Output Preference
 
-- For simple, small execution work, Planning should give `执行区` a short task card directly in the reply. Do not default to a handoff doc.
-- Even when Planning uses a short task card, it should still default to a short `验收区` review task.
-- Full task cards should be carried in the current reply or in a handoff document, not pasted in full into `docs/project_notes/issues.md`.
-- For long-running multi-phase projects, `current_task.md` may hold the one active full task card and/or current Acceptance Contract; do not grow a historical prompt archive there.
+- For simple, small execution work, Planning should give `执行区` a short task card directly in the reply. Do not default to a handoff doc, and do not default to a separate `验收区` task.
 - Use a handoff doc only for more complex work that needs a longer transfer artifact. In that case, end the reply with a copy-ready block that includes the absolute path to the handoff doc plus a short prompt the user can paste directly into `执行区`.
 - When Planning uses a handoff doc for complex work, default to including a second copy-ready block in the same reply for `验收区`.
 - Prefer `path + prompt` blocks over bare links or path-only references when a handoff doc is actually used.
+- If task cards are accumulating across phases, use one `docs/project_notes/current_task.md` file as the active copy-ready surface and overwrite it for the next task; do not append full prompts to a growing archive.
+- When `current_task.md` is the active copy-ready surface, Planning should not repeat the full task card in the chat reply; end with short paste-ready prompts that tell `执行区` or `验收区` to read `current_task.md` and name the task ID.
 - Mark unresolved product, runtime, storage, or architecture choices explicitly so `执行区` does not decide them silently.
 - Zone threads created by this workflow should use the Chinese names `规划区`、`执行区`、`验收区`、`维护区` by default.
-- `规划区` must not generate a task card or handoff until the user has agreed with the discussion outcome or scoped plan.
 
-### Complexity Rule
+### Planning Verification Defaults
 
-- Use a short task card when the scope is narrow, the behavior is already clear, and verification is short.
-- Use a handoff doc when at least two of these are true:
-  - multiple files or modules are involved
-  - product or architecture ambiguity must be locked down
-  - regression risk is meaningful
-  - verification is multi-step or manual
-  - implementation is mixed with migration, cleanup, or coordinated follow-up
+- For small Planning doc-only updates, do not run `git diff --check` by default.
+- Use `git status --short` or targeted file reads when the goal is only to confirm touched files.
+- Run `git diff --check` only for larger Markdown rewrites, complex fenced code blocks, `.gitignore` edits, or concrete whitespace/conflict-marker risk.
+- Do not run full `git diff` as a routine Planning check; use targeted diffs only when exact changed lines are needed.
 
 ### Editing Rules
 

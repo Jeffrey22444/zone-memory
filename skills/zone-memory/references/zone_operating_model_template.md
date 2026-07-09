@@ -4,15 +4,14 @@
 
 - Use the shortest artifact that safely carries the work.
 - Do not repeat stable project rules in every prompt; reference `AGENTS.md`, this file, product consensus docs, architecture docs, and the implementation plan.
-- After bootstrap, use the local project docs as the default source of truth and do not default to rereading the skill package.
 - Start with 3-5 files to read, then expand only when needed.
 - Prefer short task cards over full handoffs for small and medium work.
-- Keep `issues.md` excerpt-only; use it for summaries and routing, not for storing full task cards.
-- For long-running multi-phase projects, use `docs/project_notes/current_task.md` as the one active task surface and overwrite it for each step.
 - Do not split work so finely that `执行区` loses momentum; prefer medium-sized coherent slices with clear gates.
 - Use `/private/tmp` handoffs only for complex, risky, ambiguous, multi-stage, or failed-acceptance work.
+- For long-running multi-phase projects, use `docs/project_notes/current_task.md` as the active task surface and overwrite it for each new task.
+- Treat old task-card files as archives; do not append detailed task cards there by default.
 - Every execution task gets a short Acceptance Contract.
-- By default, every execution task also gets an independent `验收区` review pass unless the user explicitly says to skip it.
+- A separate Acceptance pass is required only for risky, user-critical, or explicitly requested work.
 
 ## Planning
 
@@ -28,33 +27,31 @@ Boundaries:
 
 - do not edit production code unless explicitly asked
 - do not silently decide unclear product behavior
-- do not switch identities; if asked to implement code, stay in `规划区` and route the task to `执行区`
 
 Preferred output:
 
 - short discussion and recommendation first
-- wait for user agreement before producing a task card or handoff
 - then either a short task card or a full handoff when complexity warrants it
-- for simple, small work, give `执行区` a short task card directly and still default to a short `验收区` review task
+- for simple, small work, give `执行区` a short task card directly and do not default to a separate `验收区` task
+- when task cards start accumulating, write the active task card and Acceptance Contract to `current_task.md` instead of growing a historical prompt file
+- when `current_task.md` is the active task surface, do not repeat the full task card in the Planning reply; end with short copy-ready prompts that tell `执行区` or `验收区` to read `current_task.md` and name the task ID
 - when routing complex work with a handoff doc, end with a copy-ready block for `执行区`: absolute path plus a short prompt
 - when a handoff doc is used for complex work, default to including a second copy-ready block for `验收区`
 - when pairing execution and acceptance, avoid duplicate reading and duplicate test instructions unless risk warrants it
 
-Complexity rule:
+Verification defaults:
 
-- use a short task card when the scope is narrow, the behavior is already clear, and verification is short
-- use a full handoff when at least two of these are true:
-  - multiple files or modules are involved
-  - product or architecture ambiguity must be locked down
-  - regression risk is meaningful
-  - verification is multi-step or manual
-  - implementation is mixed with migration, cleanup, or coordinated follow-up
+- For small Planning doc-only updates, do not run `git diff --check` by default.
+- Use `git status --short` or targeted file reads when the goal is only to confirm touched files.
+- Run `git diff --check` only for larger Markdown rewrites, complex fenced code blocks, `.gitignore` edits, or concrete whitespace/conflict-marker risk.
+- Do not run full `git diff` as a routine Planning check; use targeted diffs only when exact changed lines are needed.
 
 ## Execution
 
 Responsibilities:
 
 - read the relevant docs, task card, and memory files
+- if `current_task.md` exists, read it for the assigned active task; do not scan historical task-card archives unless the current task explicitly says to
 - implement the smallest working change
 - reuse existing patterns
 - run focused verification
@@ -67,7 +64,6 @@ Boundaries:
 - do not change product behavior beyond the task
 - stop if the task conflicts with safety rules, consensus docs, or code reality
 - do not silently decide unresolved product, architecture, or phase-gate questions
-- do not switch identities; if asked to perform final acceptance, stay in `执行区` and route the task to `验收区`
 
 Preferred output:
 
@@ -80,21 +76,19 @@ Responsibilities:
 
 - inspect the diff, tests, and behavior against the task
 - verify acceptance criteria, safety boundaries, and regression risk
-- decide `通过`, `部分通过`, or `不通过`
+- decide pass or fail
 - use the Acceptance Contract plus execution evidence plus current diff as the default input set
+- if `current_task.md` exists, read the current Acceptance Contract there
 
 Boundaries:
 
 - do not modify code
 - do not redesign the solution
 - do not repeat the full execution task unless the handoff explicitly requires it
-- do not switch identities; if asked to implement fixes, stay in `验收区` and route the work back to `执行区`
-- may discuss product details when needed for review, but do not edit code unless the user explicitly asks
 
 Preferred output:
 
-- verdict first: `通过`, `部分通过`, or `不通过`
-- use `部分通过` when task-related behavior passes but unrelated or unexpected extra file modifications require user confirmation
+- pass/fail first
 - findings by severity with file and line references
 - a minimal return task only when needed
 
@@ -108,10 +102,9 @@ Responsibilities:
 
 Boundaries:
 
-- may discuss product details when needed for diagnosis or routing
+- do not design product behavior
 - do not modify code or config unless explicitly asked
 - do not merge, rebase, reset, push, or delete branches without explicit approval
-- do not switch identities; if the task becomes product implementation, route it to `执行区`
 
 Preferred output:
 
@@ -183,3 +176,12 @@ Risk:
 Route to:
 Three-line handoff:
 ```
+
+## Project Note File Rules
+
+- `current_task.md` optional: current active task card and/or Acceptance Contract only; overwrite it for the next task instead of preserving detailed historical prompts.
+- `issues.md`: keep concise summaries, changed files, evidence, blockers, and acceptance outcomes; do not store full prompt archives.
+
+## Anti-Patterns
+
+- Do not keep appending full task cards to a growing archive when `current_task.md` is enough.

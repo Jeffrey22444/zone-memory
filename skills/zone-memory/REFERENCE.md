@@ -29,13 +29,13 @@ Use `docs/project_notes/` with these files:
 
 For long-running multi-phase projects, optionally add:
 
-- `current_task.md` for the active execution task card and/or current Acceptance Contract only
+- `current_task.md` for the active task card or active Acceptance Contract only
 
 The names are plain engineering documentation, not AI-specific artifacts.
 
 ### 2.5. Chinese-first zone naming
 
-Use these Chinese names by default for the four zones:
+When this skill creates zones automatically, use these Chinese names by default:
 
 - `规划区`
 - `执行区`
@@ -83,9 +83,9 @@ Use full `/private/tmp` handoffs only for:
 
 Avoid rule drift. Use this rule everywhere:
 
-`Every execution task gets a short Acceptance Contract and, by default, an independent Acceptance review pass. Skip the Acceptance zone only when the user explicitly says to skip it.`
+`Every execution task gets a short Acceptance Contract. A separate Acceptance pass is required only for risky, user-critical, or explicitly requested work.`
 
-That keeps the contract cheap while still preserving an independent second look.
+That keeps the contract cheap while avoiding forced review loops for trivial work.
 
 ### 2. `issues.md` needs a live summary block
 
@@ -120,58 +120,18 @@ Each execution entry in `issues.md` should prefer:
 
 This keeps the log searchable without turning each entry into a report.
 
-`issues.md` is a worklog and routing surface, not the canonical home for full
-task cards.
-
-- store task IDs, 1-2 line summaries, locked decisions, evidence summaries, and links or paths
-- do not store the full text of every task card there
-- do not store the full text of every handoff there
-
 ### 5. Prompts should reference stable docs, not restate them
 
 Zone opening prompts should point to stable docs by path and only add
 this-turn context. Repeating the full rulebook in every task card wastes tokens.
 
-### 6. Prefer two-hop handoff over user relay
-
-Default flow:
-
-- `规划区` writes one task block for `执行区`
-- that full task block lives in the current reply or in a dedicated handoff document
-- `执行区` writes evidence into `docs/project_notes/issues.md`
-- `规划区` or the user then routes `验收区` to the matching task block
-
-Avoid making the user manually relay long execution evidence between zones when
-the project notes can carry that state.
-
-### 7. Task card versus handoff is a complexity choice
-
-Treat these as separate questions:
-
-- Should this use a short task card or a full handoff?
-- Should `验收区` review it?
-
-The first question is about transfer size. The second is about independent
-review. Do not collapse them into one rule.
-
-Default complexity rule:
-
-- use a short task card for narrow, clear, low-ambiguity work with short verification
-- use a full handoff when at least two of these are true:
-  - multiple files or modules are involved
-  - product or architecture ambiguity must be locked down
-  - regression risk is meaningful
-  - verification is multi-step or manual
-  - implementation is mixed with migration, cleanup, or coordinated follow-up
-
-### 8. Planning outputs must be copy-ready
+### 6. Planning outputs must be copy-ready
 
 Planning should choose the smallest transfer shape that safely fits the work.
 
 - For simple, small work, give `执行区` a short task card directly in the reply.
-  Do not default to a handoff doc.
-- Even for simple, small work, still default to a short `验收区` review task.
-- Deliver full task cards through the current reply or a dedicated handoff document, not through `issues.md`.
+  Do not default to a handoff doc, and do not default to a separate `验收区`
+  task.
 - For medium or risky work, default to paired low-overlap artifacts:
   - execution task
   - execution evidence report template
@@ -185,15 +145,18 @@ Planning should choose the smallest transfer shape that safely fits the work.
   short prompt for `验收区` in the same reply.
 - Keep `issues.md` minimal: current recommended next task plus a short decision
   summary. Do not store paste-ready prompts there.
-- Keep task records in `issues.md` as excerpts only. Other zones should not need
-  to reread a full task card there.
-- For long-running multi-phase projects, prefer one overwritten
-  `docs/project_notes/current_task.md` active surface over a growing task-card archive.
+- For long-running multi-phase projects, prefer a single
+  `docs/project_notes/current_task.md` active task surface over a growing task-card
+  archive. Overwrite it for each new task; store only summaries and evidence in
+  `issues.md`.
+- When `current_task.md` is the active task surface, Planning's chat reply should
+  not repeat the full task card. End with short paste-ready prompts that point
+  `执行区` or `验收区` to `current_task.md` and name the task ID.
 - Every execution task card must be specific enough that `执行区` does not need
   to invent strategy, product behavior, runtime choice, storage design, or
   other unresolved user decisions.
 
-### 9. No silent execution decisions
+### 7. No silent execution decisions
 
 Planning should explicitly mark items that remain under Planning control, such
 as:
@@ -206,30 +169,6 @@ as:
 If execution hits one of these, it should stop and route back instead of
 silently choosing.
 
-### 10. Zone identity is fixed
-
-After a zone is created or entered, it must keep that identity for the whole
-conversation.
-
-- `规划区` must not switch into `执行区`
-- `执行区` must not switch into `验收区`
-- `验收区` must not switch into `执行区`
-- `维护区` must not switch into feature implementation
-
-If a user sends a cross-zone instruction inside the wrong zone, that zone
-should stay in character, refuse the role switch, and explicitly route the work
-to the correct zone.
-
-### 11. Product discussion is broader than code editing
-
-`验收区` and `维护区` may discuss product details, edge cases, expected
-behavior, or tradeoffs when that helps their review or diagnosis.
-
-That does not grant code-editing authority.
-
-- by default, only `执行区` edits code
-- `验收区` and `维护区` stay read-only unless the user explicitly asks them to modify code
-
 ## Bootstrap Procedure
 
 1. Inspect the repo for existing docs and workflow rules.
@@ -241,12 +180,11 @@ That does not grant code-editing authority.
    - `docs/implementation-plan.md`
 5. Merge the AGENTS/CLAUDE workflow section into the project's existing files.
 6. Initialize Git if the workspace is not already a repository.
-7. By default, tell the user to create four zones manually: `规划区`, `执行区`, `验收区`, `维护区`.
-8. Return four copy-ready opening prompts so the user can prime those zones manually.
-9. Only when the platform supports thread creation should the skill auto-create those zones and prefill the prompts.
-10. Customize project-specific read order and safety rules.
-11. Add one bootstrap entry to `issues.md`.
-12. Stop. Do not invent extra files, roles, or ceremony unless the project needs them.
+7. Create four zone threads automatically: `规划区`, `执行区`, `验收区`, `维护区`.
+8. Send each zone its opening prompt so the user does not have to create or prime the zones manually.
+9. Customize project-specific read order and safety rules.
+10. Add one bootstrap entry to `issues.md`.
+11. Stop. Do not invent extra files, roles, or ceremony unless the project needs them.
 
 ## Git Bootstrap Default
 
@@ -259,18 +197,10 @@ Use the smallest useful Git setup:
 
 If the user asks for more, that can be a separate step.
 
-## Zone Setup Default
+## Zone Auto-Creation Default
 
-Portable default:
-
-- ask the user to create four zones manually
-- provide four copy-ready opening prompts
-- keep the first reply in each zone minimal
-
-Optional enhancement:
-
-- when the app supports thread creation or forking, the skill may create four
-  zone threads automatically and send each one a short opening message that:
+When the app supports thread creation or forking, this skill should create four
+zone threads automatically and send each one a short opening message that:
 
 - states its zone responsibility
 - tells it which project-note files to read first
@@ -317,13 +247,16 @@ Do not auto-create English-named zone threads unless the user explicitly asks.
 - Put the live summary first.
 - Use the chronological log for plans, execution evidence, acceptance outcomes, maintenance notes, and blockers.
 - When updating, touch only the relevant latest entry when possible.
+- Keep detailed task cards and paste-ready prompts out of this file; record concise task intent, changed files, evidence, blockers, and acceptance outcomes instead.
 
 ### `current_task.md` optional
 
-- Use only when a project has enough phases or cross-thread handoffs that one active task file saves tokens.
-- Store the current execution task card and/or current Acceptance Contract only.
+- Use only when a project has enough phases or cross-thread handoffs that an active task file saves tokens.
+- Store the current execution task, Acceptance Contract, or acceptance task only.
 - Overwrite it when the next task starts.
-- Keep history in `issues.md` as concise summaries and evidence, not full prompt archives.
+- Do not preserve detailed historical prompts here; history belongs in `issues.md` as concise summaries and evidence.
+- `执行区` should read this file for the active assignment plus only the listed supporting files.
+- `验收区` should read the current Acceptance Contract here plus the latest matching evidence block in `issues.md` and the current diff.
 
 ### `zone_operating_model.md`
 
@@ -413,6 +346,7 @@ Do not ship these into a new project:
 - mixing stable facts with drifting progress in `key_facts.md`
 - forcing a full Acceptance pass on every trivial slice
 - repeating stable rules in every task card
+- growing a long task-card archive when a single overwritten `current_task.md` would do
 - making execution invent runtime, storage, or new product rules because planning left them implicit
 - sending acceptance the full execution prompt when a contract plus evidence would do
 - creating more zones, files, or roles before there is a real need
