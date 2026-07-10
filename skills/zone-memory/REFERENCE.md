@@ -176,6 +176,11 @@ Planning should choose the smallest transfer shape that safely fits the work.
 - When `current_task.md` is the active task surface, Planning's chat reply should
   not repeat the full task card. End with short paste-ready prompts that point
   `执行区` or `验收区` to `current_task.md` and name the task ID.
+- If `current_task.md` contains an acceptance task or Acceptance Contract for
+  `验收区`, Planning must also include a short paste-ready prompt for `验收区`
+  in the same reply.
+- If Planning does not place any acceptance task in `current_task.md`, it must
+  say explicitly: `本次任务无需验收区`.
 - Every execution task card must be specific enough that `执行区` does not need
   to invent strategy, product behavior, runtime choice, storage design, or
   other unresolved user decisions.

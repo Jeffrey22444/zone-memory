@@ -53,6 +53,8 @@ Use this skill to set up a lean project operating system:
 - For small, clear, low-risk work, prefer one active working zone plus the minimum necessary handoff instead of a full four-zone relay.
 - For long-running multi-phase projects, use `docs/project_notes/current_task.md` as an optional active task surface: overwrite it for each new task, and keep history in `issues.md` as concise summaries and evidence instead of full prompts.
 - When `current_task.md` is the active task surface, Planning should not repeat the full task card in the chat reply; end with short copy-ready prompts that tell `执行区` or `验收区` to read `current_task.md` and name the task ID.
+- If `current_task.md` contains an acceptance task or Acceptance Contract for `验收区`, Planning must also include a short paste-ready prompt for `验收区` in the same reply.
+- If Planning does not place any acceptance task in `current_task.md`, it must say explicitly: `本次任务无需验收区`.
 - For medium or risky work, use a two-hop flow: `规划区` sends one task block to `执行区`, then one task block to `验收区`; execution evidence should be written back into `docs/project_notes/issues.md` instead of manually relayed by the user.
 - No zone should read `issues.md` end to end by default; read `Current Summary` plus the latest log block for the current task ID.
 - Keep `issues.md` two-layered: current summary first, chronological log below.

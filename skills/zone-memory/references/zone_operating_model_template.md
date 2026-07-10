@@ -41,6 +41,8 @@ Preferred output:
 - for simple, small work, give `执行区` a short task card directly and do not default to a separate `验收区` task
 - when task cards start accumulating, write the active task card and Acceptance Contract to `current_task.md` instead of growing a historical prompt file
 - when `current_task.md` is the active task surface, do not repeat the full task card in the Planning reply; end with short copy-ready prompts that tell `执行区` or `验收区` to read `current_task.md` and name the task ID
+- if `current_task.md` contains an acceptance task or Acceptance Contract for `验收区`, include a short copy-ready prompt for `验收区` in the same reply
+- if no acceptance task is placed in `current_task.md`, say explicitly: `本次任务无需验收区`
 - when routing complex work with a handoff doc, end with a copy-ready block for `执行区`: absolute path plus a short prompt
 - when a handoff doc is used for complex work, default to including a second copy-ready block for `验收区`
 - when pairing execution and acceptance, avoid duplicate reading and duplicate test instructions unless risk warrants it

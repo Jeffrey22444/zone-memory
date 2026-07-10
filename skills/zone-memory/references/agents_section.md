@@ -83,6 +83,8 @@ Every execution task gets a short Acceptance Contract. A separate Acceptance pas
 - Prefer `path + prompt` blocks over bare links or path-only references when a handoff doc is actually used.
 - If task cards are accumulating across phases, use one `docs/project_notes/current_task.md` file as the active copy-ready surface and overwrite it for the next task; do not append full prompts to a growing archive.
 - When `current_task.md` is the active copy-ready surface, Planning should not repeat the full task card in the chat reply; end with short paste-ready prompts that tell `执行区` or `验收区` to read `current_task.md` and name the task ID.
+- If `current_task.md` contains an acceptance task or Acceptance Contract for `验收区`, Planning must also include a short paste-ready prompt for `验收区` in the same reply.
+- If Planning does not place any acceptance task in `current_task.md`, it must say explicitly: `本次任务无需验收区`.
 - Mark unresolved product, runtime, storage, or architecture choices explicitly so `执行区` does not decide them silently.
 - Zone threads created by this workflow should use the Chinese names `规划区`、`执行区`、`验收区`、`维护区` by default.
 
