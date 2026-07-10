@@ -67,6 +67,7 @@ Every execution task gets a short Acceptance Contract. A separate Acceptance pas
 - Execution evidence is not acceptance.
 - Default acceptance input is: `Acceptance Contract + execution evidence + current diff`.
 - If `docs/project_notes/current_task.md` exists, `执行区` should read the active task there and `验收区` should read the current Acceptance Contract there instead of scanning historical task-card archives.
+- If `验收区` returns fail, it should also return a minimal rework task for `执行区` rather than only a list of findings.
 - For medium or risky work, Planning should usually prepare:
   - one execution task
   - one execution evidence report template

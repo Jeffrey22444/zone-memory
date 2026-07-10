@@ -98,7 +98,8 @@ Preferred output:
 
 - pass/fail first
 - findings by severity with file and line references
-- a minimal return task only when needed
+- if the verdict is fail, provide a minimal rework task for `执行区`
+- if the verdict is pass, omit the rework task unless the user explicitly asks for follow-up work
 
 ## Maintenance
 

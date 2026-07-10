@@ -87,6 +87,9 @@ Avoid rule drift. Use this rule everywhere:
 
 That keeps the contract cheap while avoiding forced review loops for trivial work.
 
+If Acceptance returns fail, it should also send back a minimal rework task for
+`执行区`, not only a problem list.
+
 ### 2. `issues.md` needs a live summary block
 
 Put this at the top of `issues.md`:
