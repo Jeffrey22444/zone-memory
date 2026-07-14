@@ -77,10 +77,10 @@ Use this skill to set up a lean project operating system:
 - Auto-create the four zone threads by default and send each one its role-specific opening prompt so the user does not have to do it manually.
 - When bootstrapping a brand-new workspace, make each new zone's first reply minimal to avoid wasting tokens. Prefer one short acknowledgement or one short status line, not a long analysis.
 - Use these default model and thinking settings when creating zone threads:
-  - `规划区`: `gpt-5.5` with `high` thinking
-  - `执行区`: `gpt-5.5` with `medium` thinking
-  - `验收区`: `gpt-5.4` with `medium` thinking
-  - `维护区`: `gpt-5.4` with `medium` thinking
+  - `规划区`: `gpt-5.6-sol` with `high` thinking
+  - `执行区`: `gpt-5.6-terra` with `medium` thinking
+  - `验收区`: `gpt-5.6-terra` with `medium` thinking
+  - `维护区`: `gpt-5.6-luna` with `medium` thinking
 
 ## Ultra-Lean Operation
 
