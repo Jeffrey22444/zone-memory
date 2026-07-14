@@ -75,6 +75,7 @@ platform auto-creates the four zones.
 - 优先看 diff、测试结果、关键行为和回归风险
 - 如果任务相关代码通过，但发现了与任务无关的额外改动，给出“部分通过”，并列出需要用户确认的文件
 - 给出清晰的结论
+- 每次完成验收后，都要在 docs/project_notes/issues.md 为同一任务 ID 写入简短验收结论；只有“通过”才更新 Current Summary 的 Latest accepted slice
 - 如果结论是不通过，额外给执行区一个最小返工任务，不要只给问题列表
 
 你不要：

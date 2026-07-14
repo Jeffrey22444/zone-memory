@@ -90,6 +90,11 @@ That keeps the contract cheap while avoiding forced review loops for trivial wor
 If Acceptance returns fail, it should also send back a minimal rework task for
 `执行区`, not only a problem list.
 
+After every Acceptance pass, `验收区` must write a concise result for the same
+task ID to `issues.md`. When the verdict is `通过`, it must also update `Latest
+accepted slice` in the live summary. `部分通过` and `不通过` should record the
+unresolved risk or rework route without advancing that field.
+
 ### 2. `issues.md` needs a live summary block
 
 Put this at the top of `issues.md`:
@@ -285,6 +290,7 @@ Do not auto-create English-named zone threads unless the user explicitly asks.
 
 - Put the live summary first.
 - Use the chronological log for plans, execution evidence, acceptance outcomes, maintenance notes, and blockers.
+- After each Acceptance pass, record the verdict in the matching log entry; only a `通过` verdict updates `Latest accepted slice`.
 - When updating, touch only the relevant latest entry when possible.
 - Keep detailed task cards and paste-ready prompts out of this file; record concise task intent, changed files, evidence, blockers, and acceptance outcomes instead.
 - Keep the Current Summary short enough that a new zone can read it quickly without paying for a mini project-history replay.

@@ -191,7 +191,7 @@ Three-line handoff:
 ## Project Note File Rules
 
 - `current_task.md` optional: current active task card and/or Acceptance Contract only; overwrite it for the next task instead of preserving detailed historical prompts.
-- `issues.md`: keep concise summaries, changed files, evidence, blockers, and acceptance outcomes; do not store full prompt archives.
+- `issues.md`: keep concise summaries, changed files, evidence, blockers, and acceptance outcomes; do not store full prompt archives. After each Acceptance pass, `验收区` must record the verdict for the same task ID; only `通过` updates `Latest accepted slice`.
 
 ## Anti-Patterns
 

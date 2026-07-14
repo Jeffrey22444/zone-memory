@@ -6,7 +6,7 @@ Use this file for the current summary, plans, execution progress, acceptance res
 
 - **Current phase**:
 - **Current recommended next task**:
-- **Latest accepted slice**:
+- **Latest accepted slice**: Update only when `验收区` records a `通过` verdict.
 - **Open blockers**:
 - **Last updated**: YYYY-MM-DD
 
@@ -24,6 +24,10 @@ Agents should scan this block first, then read only the relevant latest entry be
 - **Scope Skipped**: Intentional non-goals.
 - **Planning Decisions**: Locked decisions or unresolved items, if relevant.
 - **Notes**: Important context.
+
+For every Acceptance pass, add a concise verdict to the matching task entry. A
+`部分通过` or `不通过` result must retain its risks or rework route, but must not
+advance `Latest accepted slice`.
 
 ## Security
 
